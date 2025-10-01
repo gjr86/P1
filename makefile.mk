@@ -6,7 +6,7 @@ hello:
 	gcc -Wall -Werror -fsanitize=address,undefined -g $(f).c -o $(f).out -lm
 
 nWarning:
-	 gcc -Wall -fsanitize=address,undefined -g $(f).c -o $(f).out
+	gcc -Wall -fsanitize=address,undefined -g $(f).c -o $(f).out
 
 std:
 	gcc -Wall -Werror -fsanitize=address,undefined -g $(f).c -o $(f).out

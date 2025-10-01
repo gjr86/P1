@@ -1,6 +1,7 @@
-#include "mymalloc.h"
-#include "stddef.h"
+#include <stdio.h>
+#include <stddef.h>
 
+#include "mymalloc.h"
 
 
 #define MEMLENGTH 4096
@@ -55,9 +56,37 @@ void* mymalloc(size_t byte, char* filename, char* lineNo) {
 }
 
 void myfree(void *ptr, char *file, int line) {
-    /*
-    mark the block pointed to by ptr as free
-    here we will coalesce free blocks if possible
-    */
-   return;
+   if (!initialized) { 
+      initialization(); 
+      initialized = 1; 
+   } 
+   if (ptr == NULL) {
+      printf("myfree(): ptr is NULL"); 
+      return; 
+   }
+   // get block header 
+   Block *block = (Block *)ptr - 1; 
+
+   if (block->free) { 
+      printf("myfree(): free at %s:%d\n", file, line); 
+      return; 
+   } 
+
+   block->free = 1; 
+
+   // coalesce forward 
+   while (block->next && block->next->free) { 
+      block->size += sizeof(Block) + block->next->size; 
+      block->next = block->next->next; 
+   } 
+
+   // coalesce backward 
+   Block *current = LL; 
+   while (current && current->next != block) { 
+      current = current->next; 
+   } 
+   if (current && current->free) { 
+      current->size += sizeof(Block) + block->size; 
+      current->next = block->next; 
+   } 
 }
