@@ -1,16 +1,20 @@
 f = memtest
-f2 = mymalloc.c
+malloc = mymalloc.c
+grind = memgrind
 
 all: hello
 
 hello:
-	gcc -Wall -Werror -fsanitize=address,undefined -g $(f).c $(f2) -o $(f) -lm
+	gcc -Wall -Werror -fsanitize=address,undefined -g $(f).c $(malloc) -o $(f) -lm
+
+grind:
+	gcc -Wall -Werror -fsanitize=address,undefined -g $(grind).c $(malloc) -o $(grind) -lm
 
 nWarning:
-	 gcc -Wall -fsanitize=address,undefined -g $(f).c -o $(f)
+	 gcc -Wall -fsanitize=address,undefined -g $(f) -o $(f)
 
 std:
-	gcc -Wall -Werror -fsanitize=address,undefined -g $(f).c -o $(f)
+	gcc -Wall -Werror -fsanitize=address,undefined -g $(f) -o $(f)
 
 clear:
 	rm -rf $(f)
@@ -18,8 +22,8 @@ clear:
 run:
 	./$(f)
 
-access:
-	nano $(f).c
+runGrind:
+	./$(grind)
 
 changeMake:
 	nano Makefile
