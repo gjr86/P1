@@ -19,6 +19,9 @@ std:
 clear:
 	rm -rf $(f)
 
+clearGrind:
+	rm -rf $(grind)
+
 run:
 	./$(f)
 
