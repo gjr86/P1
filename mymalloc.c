@@ -97,7 +97,7 @@ void illegalFree(char* file, int line) { //Handles inappropriate free calls (2.1
 void myfree(void *ptr, char *file, int line) {
    checkInitalization();
    if (ptr == NULL) {
-      printf("free: ptr is NULL"); 
+      printf("free: ptr is NULL\n"); 
       return; 
    }
 
