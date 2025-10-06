@@ -1,6 +1,6 @@
 Names: 
    Angelo Maniacci - amm928
-   Gabriel Rodriguez - 
+   Gabriel Rodriguez - gjr86
 
 Test Plans:
    For Test 4 on memgrind, the test is to randomly allocate memory of different sizes to a linked list strucutre or randomly remove either the head or tail, then free the entire list at the end.

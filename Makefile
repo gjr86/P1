@@ -1,4 +1,4 @@
-f = memtest
+mf = memtest
 malloc = mymalloc.c
 grind = memgrind
 
