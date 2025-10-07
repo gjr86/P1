@@ -1,4 +1,11 @@
-mf = memtest
+# Call "make" to compile memtest.c with mymalloc.c, call "make run" to execute memtest, and call "make clear" to remove the compiled binary for memtest.
+# Call "make grind" to compile memgrind.c with mymalloc.c, call "make runGrind" to execute memgrind, and call "make clearGrind" to remove the compiled binary for memgrind.
+#
+# All other commands are for debugging and convenience and can be ignored.
+# Descriptions for memtest and memgrind can be found in their functions and in the README. 
+#
+
+f = memtest
 malloc = mymalloc.c
 grind = memgrind
 
